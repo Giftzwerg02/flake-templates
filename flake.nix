@@ -9,6 +9,10 @@
       createTemplate = nixpkgs.lib;
   in {
     templates = {
+        test = {
+          path = ./ctf/pwn;
+          description = "foobar";
+        };
     };
   };
 }
