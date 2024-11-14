@@ -6,7 +6,7 @@
     
     nixpkgs,
   }: let
-      createTemplate = lib;
+      createTemplate = nixpkgs.lib;
   in {
     templates = {
     };
