@@ -10,7 +10,7 @@
       assert builtins.isPath path;
         lib.last (
           builtins.split
-          "flake-templates/templates/"
+          "flake-templates/"
           (toString path)
         );
 
@@ -33,9 +33,9 @@
         }
       ];
   in {
-    # templates =
-    #   builtins.listToAttrs
-    #   (lib.map createTemplate templatePaths);
-    templates = { "templates/ctf/pwn" = { path = ./templates/ctf/pwn; description = "test";}; };
+    templates =
+      builtins.listToAttrs
+      (lib.map createTemplate templatePaths);
+    # templates = { "templates/ctf/pwn" = { path = ./templates/ctf/pwn; description = "test";}; };
   };
 }
