@@ -10,7 +10,7 @@
       assert builtins.isPath path;
         lib.last (
           builtins.split
-          "flake-templates/"
+          "flake-templates/templates/"
           (toString path)
         );
 
