@@ -35,7 +35,7 @@
     #   builtins.listToAttrs
     #   (lib.map createTemplate templatePaths);
     templates = {
-      foo = {
+      "${./templates/ctf/pwn}" = {
         path = ./templates/ctf/pwn;
         description = "a";
       };
