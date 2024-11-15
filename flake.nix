@@ -27,7 +27,7 @@
         name = templateName path;
         value = {
           inherit path;
-          description = "Template from: ${path}";
+          description = "Template for: ${templateName path}";
         };
       };
   in {
