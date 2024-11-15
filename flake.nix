@@ -23,15 +23,13 @@
       );
 
     createTemplate = path:
-      assert builtins.isPath path; [
-        {
-          name = templateName path;
-          value = {
-            inherit path;
-            description = "Template from: ${path}";
-          };
-        }
-      ];
+      assert builtins.isPath path; {
+        name = templateName path;
+        value = {
+          inherit path;
+          description = "Template from: ${path}";
+        };
+      };
   in {
     templates =
       builtins.listToAttrs
