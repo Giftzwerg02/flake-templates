@@ -14,22 +14,27 @@
           (toString path)
         );
 
-    templatePaths = 
-        lib.map (p: builtins.dirOf p)
-        (
-          lib.filter
-          (p: builtins.baseNameOf p == "flake.nix")
-          (lib.filesystem.listFilesRecursive ./templates)
-        );
+    templatePaths =
+      lib.map (p: builtins.dirOf p)
+      (
+        lib.filter
+        (p: builtins.baseNameOf p == "flake.nix")
+        (lib.filesystem.listFilesRecursive ./templates)
+      );
 
     createTemplate = path:
-      assert builtins.isPath path; {
-        "${templateName path}" = {
-          inherit path;
-          description = "Template from: ${path}";
-        };
-      };
+      assert builtins.isPath path; [
+        {
+          name = templateName path;
+          value = {
+            inherit path;
+            description = "Template from: ${path}";
+          };
+        }
+      ];
   in {
-    templates = lib.map createTemplate templatePaths;
+    templates =
+      builtins.listToAttrs
+      (lib.map createTemplate templatePaths);
   };
 }
