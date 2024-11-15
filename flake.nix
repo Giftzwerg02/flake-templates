@@ -31,8 +31,14 @@
         };
       };
   in {
-    templates =
-      builtins.listToAttrs
-      (lib.map createTemplate templatePaths);
+    # templates =
+    #   builtins.listToAttrs
+    #   (lib.map createTemplate templatePaths);
+    templates = {
+      foo = {
+        path = ./templates/ctf/pwn;
+        description = "a";
+      };
+    };
   };
 }
