@@ -11,11 +11,11 @@
         let
           name = lib.last (
           builtins.split
-          "/templates"
+          "/templates/"
           (toString path)
         );
         in
-          if name == "" then "default" else name;
+          if lib.strings.isStorePath name then "default" else name;
 
     templatePaths =
       lib.map (p: builtins.dirOf p)
