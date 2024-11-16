@@ -15,7 +15,7 @@
           (toString path)
         );
         in
-          if lib.strings.isStorePath name then "default" else name;
+          if lib.strings.hasSuffix "/templates" name then "default" else name;
 
     templatePaths =
       lib.map (p: builtins.dirOf p)
