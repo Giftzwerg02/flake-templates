@@ -19,6 +19,8 @@
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
             rust-bin.stable."latest".default
+            rust-analyzer
+            clippy
 
             gcc
             pkg-config
